@@ -20,6 +20,6 @@ readline_object.on("close", ContestResponse);
 
 
 function ContestResponse(){
-    console.log(input.shift() && input.reduce((a, v) => +a + +v))
+    console.log(input.shift() && input.map(Number).reduce((a, v) => a+v))
 	//implements your code here using input array
 }
