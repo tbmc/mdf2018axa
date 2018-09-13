@@ -1,6 +1,7 @@
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import babel from "rollup-plugin-babel";
+import babelrc from 'babelrc-rollup';
 
 export default {
 	input: "./src/index.js",
@@ -17,6 +18,7 @@ export default {
         }),
         commonjs(),
         babel({
+			...babelrc(),
             exclude: "node_modules/**"
         })
 		// production && uglify() // minify, but only in production
