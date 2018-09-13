@@ -1,7 +1,7 @@
 import content from "./content";
-const _ = require("lodash");
-const fs = require("fs");
-const path = require("path");
+import _ from "lodash";
+import fs from "fs";
+import path from "path";
 
 const files = fs.readdirSync(path.resolve(path.join(__dirname, "examples"))).filter((filename) => !filename.startsWith("."));
 const fileGroup = _.groupBy(files, (file) => path.parse(file).name.replace(/input|output/, "")/1);
