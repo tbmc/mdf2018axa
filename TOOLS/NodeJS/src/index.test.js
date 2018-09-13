@@ -23,7 +23,7 @@ describe("tests", () => {
             content(input);
 
             if (outputs.length === 1) {
-                expect(console.log).toBeCalledWith(isNaN(output) ? output: output/1);
+                expect(console.log).toBeCalledWith(isNaN(outputs[0]) ? outputs[0]: outputs[0]/1);
             } else {
                 try {
                     expect(console.log).toBeCalledWith(outputs.join(" "));
