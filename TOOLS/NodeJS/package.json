@@ -34,12 +34,14 @@
   "dependencies": {
     "lodash": "4.17.10"
   },
+  "jest": {
+    "rootDir": "./"
+  },
   "scripts": {
     "start": "npm-run-all -p rollup watch:copy",
     "test": "jest --watch",
     "rollup": "rollup -c -w",
     "watch:copy": "watch \"npm run copy\" ./dist",
-    "copy": "node ./copy",
-    "babel": "babel ./src/index.js --out-dir ./dist"
+    "copy": "node ./copy"
   }
 }

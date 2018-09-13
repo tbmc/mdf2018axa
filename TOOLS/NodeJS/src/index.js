@@ -1,5 +1,4 @@
 import "babel-polyfill";
-import _ from "lodash";
 import contestResponse from "./content.js";
 
 const input = [];
