@@ -63,7 +63,7 @@ export default (input) => {
     const grid = spirale.split("\n").filter(Boolean).map((line) => line.split(""));
     const [size] = input.map(Number);
     const offset = (51 - size) / 2;
-    const resultGrid = _.range(size).map(() => _.range(size).map(() => undefined));
+    const resultGrid = _.range(size).map(() => _.range(size).map(() => {}));
     const result = _.range(size).map((tt, i) => _.range(size).map((yy, j) =>
         resultGrid[i][j] = grid[offset + i - 1][offset + j]
     ));
