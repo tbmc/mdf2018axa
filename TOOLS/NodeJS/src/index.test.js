@@ -13,8 +13,8 @@ const jsonContents = Object.values(fileGroup).map(([input, output]) => {
     return [inputsJson, outputsJson];
 });
 describe("tests", () => {
-    window.LocalPrint = () => {};
-    window.LocalPrintArray = () => {};
+    window.LocalPrint = (log) => console.info(log);
+    window.LocalPrintArray = (...log) => console.info(...log);
 
 
     jsonContents.forEach(([input, outputs]) => {
