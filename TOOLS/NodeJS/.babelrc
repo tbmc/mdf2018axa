@@ -5,7 +5,7 @@
             "modules": false,
             "useBuiltIns": "usage",
             "targets": {
-                "node": "6"
+                "node": "5"
             }
         }]
     ],
