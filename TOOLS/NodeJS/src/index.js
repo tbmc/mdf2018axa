@@ -12,7 +12,10 @@ readline_object.on("close", () => {
     LocalPrint("------------ INPUT -----------");
     LocalPrintArray(input);
     LocalPrint("---------- RESPONSE ----------");
-    contestResponse(input);
+    const response = contestResponse(input);
+    if (response) {
+        console.log(response);
+    }
     LocalPrint(" ");
     LocalPrint(" ");
 });

@@ -3,8 +3,18 @@ import _ from "lodash";
 import fs from "fs";
 import path from "path";
 
+
+const exclude = [
+
+];
+
+
 const files = fs.readdirSync(path.resolve(path.join(__dirname, "examples"))).filter((filename) => !filename.startsWith("."));
-const fileGroup = _.groupBy(files, (file) => path.parse(file).name.replace(/input|output/, "")/1);
+const fileGroup = _.groupBy(files, (file) => {
+    const number = path.parse(file).name.replace(/input|output/, "")/1;
+    return exclude.includes(number) ? "excludes": number;
+});
+delete fileGroup.excludes;
 const jsonContents = Object.values(fileGroup).map(([input, output]) => {
     const fileInput = path.resolve(`${__dirname}/examples/${input}`);
     const fileOutput = path.resolve(`${__dirname}/examples/${output}`);
@@ -12,23 +22,22 @@ const jsonContents = Object.values(fileGroup).map(([input, output]) => {
     const outputsJson = fs.readFileSync(fileOutput, "utf-8").split("\n").filter(Boolean);
     return [inputsJson, outputsJson];
 });
+
 describe("tests", () => {
     window.LocalPrint = (log) => console.info(log);
-    window.LocalPrintArray = (...log) => console.info(...log);
+    window.LocalPrintArray = (...logs) => logs.forEach((log) => console.info(log));
 
     jsonContents.forEach(([input, outputs]) => {
         test("process test", () => {
-            spyOn(console, "log").and.callThrough();
-
-            content(input);
+            const result = content(_.cloneDeep(input));
 
             if (outputs.length === 1) {
-                expect(console.log).toBeCalledWith(isNaN(outputs[0]) ? outputs[0]: outputs[0]/1);
+                expect(result).toEqual(isNaN(outputs[0]) ? outputs[0]: outputs[0]/1);
             } else {
                 try {
-                    expect(console.log).toBeCalledWith(outputs.join(" "));
+                    expect(result).toEqual(outputs.join(" "));
                 } catch (e) {
-                    expect(console.log).toBeCalledWith(outputs.join("\n"));
+                    expect(result).toEqual(outputs.join("\n"));
                 }
             }
         })

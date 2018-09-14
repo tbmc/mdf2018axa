@@ -1686,6 +1686,10 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.1.1"
 
+heap@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/heap/-/heap-0.2.5.tgz#713b65590ebcc40fcbeeaf55e851694092b39af1"
+
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://afa-nrepo.azure-paas.intraxa/repository/npmjs-group/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -2323,6 +2327,10 @@ jest@23.6.0:
   dependencies:
     import-local "^1.0.0"
     jest-cli "^23.6.0"
+
+js-graph-algorithms@1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/js-graph-algorithms/-/js-graph-algorithms-1.0.18.tgz#f96ec87bf194f5c0a31365fa0e1d07b7b962d891"
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -2979,6 +2987,12 @@ path-type@^3.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
   dependencies:
     pify "^3.0.0"
+
+pathfinding@0.4.18:
+  version "0.4.18"
+  resolved "https://registry.yarnpkg.com/pathfinding/-/pathfinding-0.4.18.tgz#a9990f6fa22b7ef196e5651b049165403a045fe8"
+  dependencies:
+    heap "0.2.5"
 
 pause-stream@^0.0.11:
   version "0.0.11"
