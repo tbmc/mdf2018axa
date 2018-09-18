@@ -2,56 +2,35 @@ package com.isograd.test;
 
 import static org.junit.Assert.fail;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.isograd.exercise.IsoContest;
 
 public class TestRunner {
+	
+	private final static String testFileDir = "testCases";
+	
+	private PrintStream _out = System.out;
+	private InputStream _in = System.in;
 
 	@Test
-	public void runTest() {
+	public void runTest() throws IOException {
 
-		int maxFileNumber = 6;
-		for (int i = 1; i <= maxFileNumber; i++) {
-
-			final String inputFileName = "/input" + i + ".txt";
-			final String outputFileName = "/output" + i + ".txt";
-
-			try (final InputStream isInput = getClass().getResourceAsStream(inputFileName);
-					final InputStream isOutput = getClass().getResourceAsStream(outputFileName);
-					final InputStream input1 = new BufferedInputStream(isOutput);
-
-					final OutputStream outputResult = new ByteArrayOutputStream();
-					final PrintStream psOut = new PrintStream(outputResult);) {
-
-				if (isInput == null && isOutput == null) {
-					break;
-				}
-
-				System.setIn(isInput);
-				System.setOut(psOut);
-
-				IsoContest.main(null);
-
-				final InputStream input2 = new ByteArrayInputStream(
-						((ByteArrayOutputStream) outputResult).toByteArray());
-
-				compareStreams(input1, input2);
-
-			} catch (final Exception e) {
-				e.printStackTrace();
-				fail("Erreur");
-			}
-
-		}
+		Files.list( Paths.get(testFileDir) )
+		.filter( p -> p.getFileName().toString().contains("input") )
+		.forEach( this::testFile );
 
 	}
 
@@ -74,6 +53,38 @@ public class TestRunner {
 		if (ch2 != -1) {
 			fail("Expected End Of File but found [" + (char) ch2 + "]");
 		}
+	}
+	
+	private void testFile(Path infile) {
+		
+		_out.print("test file " + infile.getFileName() );
+		
+		try {
+			
+			String endName = infile.getFileName().toString().substring(5);
+			Path outfile = infile.resolveSibling( "output" + endName );
+			
+			final InputStream expected = new FileInputStream( outfile.toFile() );
+			final InputStream in = new FileInputStream( infile.toFile() );
+	
+			final OutputStream outputResult = new ByteArrayOutputStream();
+			final PrintStream out = new PrintStream(outputResult);
+		
+			System.setIn(in);
+			System.setOut(out);
+	
+			IsoContest.main(null);
+		
+			final InputStream result = new ByteArrayInputStream(
+					((ByteArrayOutputStream) outputResult).toByteArray());
+		
+			compareStreams(expected, result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail(e.getMessage());
+		}
+		
+		_out.println(" [OK]" );
 	}
 
 }
