@@ -2,6 +2,9 @@ package com.isograd.test;
 
 import static org.junit.Assert.fail;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -30,8 +33,16 @@ public class TestRunner {
 
 		Files.list( Paths.get(testFileDir) )
 		.filter( p -> p.getFileName().toString().contains("input") )
-		.forEach( this::testFile );
+		.forEach( this::testFile );		
 
+		System.out.println("Copy solution to clipboard.");
+		
+		byte[] encoded = Files.readAllBytes( Paths.get("src", IsoContest.class.getName().replace('.', '/')+".java" ) );
+		String theString = new String(encoded, "UTF-8");
+		StringSelection selection = new StringSelection(theString);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(selection, selection);
+		
 	}
 
 	private void compareStreams(final InputStream input1, final InputStream input2) throws IOException {
