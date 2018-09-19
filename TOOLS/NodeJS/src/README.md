@@ -14,6 +14,12 @@ console.log(result.join(" "));
 //with js tools
 return result.join(" ");
 ```
+---
+Multiple returns format (with result as grid)
+```js
+result.map((v) => v.join("")).join(" ")
+```
+---
 ```js
 console.log(result.join("\n"));
 //with js tools
