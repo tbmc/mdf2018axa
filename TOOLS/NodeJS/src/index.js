@@ -13,7 +13,7 @@ readline_object.on("close", () => {
     LocalPrintArray(input);
     LocalPrint("---------- RESPONSE ----------");
     const response = contestResponse(input);
-    if (response) {
+    if (response !== undefined) {
         console.log(response);
     }
     LocalPrint(" ");

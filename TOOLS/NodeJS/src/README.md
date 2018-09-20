@@ -5,7 +5,7 @@ const grid = input.map((line) => line.split("").map((col) => col));
 ---
 Fill grid array with value
 ```js
-const fillGrid = Array(size).fill().map(() => Array(size).fill().map(() => defaultValue));
+const fillGrid = Array(size).fill().map(() => Array(size).fill(defaultValue));
 ```
 ---
 Multiple returns format (with result as an array)
