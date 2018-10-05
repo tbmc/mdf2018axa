@@ -1,6 +1,6 @@
 # mdf2018axa
 
-Share usefull ressources
+Share useful ressources
 
 ## Links
 
