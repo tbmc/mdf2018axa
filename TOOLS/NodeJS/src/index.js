@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import contestResponse from "./content.js";
 
 const input = [];
