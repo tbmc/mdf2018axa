@@ -10,6 +10,7 @@ export const rotateMatrixCounterClockwise = matrix => flipMatrix(matrix).reverse
 
 export const flipMatrixCounterClockwise = matrix => rotateMatrix(matrix).reverse();
 
-export const toGrid = (input) => input.map((line) => line.split("").map((col) => col));
+export const toGrid = (input) => input.map((line) => line.split(" ").map((col) => col));
+export const toGridNumber = (input) => input.map((line) => line.split(" ").map((col) => col/1));
 
 export const fillGrid = (size, val) => Array(size).fill().map(() => Array(size).fill(val));
