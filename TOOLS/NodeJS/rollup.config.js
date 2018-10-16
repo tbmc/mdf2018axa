@@ -18,7 +18,7 @@ export default {
         }),
         commonjs(),
         babel({
-			...babelrc(),
+			// ...babelrc(),
             exclude: "node_modules/**"
         })
 		// production && uglify() // minify, but only in production

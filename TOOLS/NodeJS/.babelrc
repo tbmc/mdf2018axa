@@ -1,8 +1,6 @@
 {
     "presets": [
-        "es2015",
-        ["env", {
-            "modules": false,
+        ["@babel/env", {
             "useBuiltIns": "usage",
             "targets": {
                 "node": "5"
@@ -11,11 +9,10 @@
     ],
     "plugins": [
         "lodash",
-        "transform-object-assign",
-        "transform-object-rest-spread",
-        "syntax-object-rest-spread",
-        "transform-es2015-parameters",
-        "transform-class-properties",
-        "array-includes"
+        "@babel/plugin-transform-object-assign",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-syntax-object-rest-spread",
+        "@babel/plugin-transform-parameters",
+        "@babel/plugin-proposal-class-properties"
     ]
 }

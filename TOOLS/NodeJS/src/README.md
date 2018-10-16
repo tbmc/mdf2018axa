@@ -1,6 +1,6 @@
 Transform input to grid array
 ```js
-const grid = input.map((line) => line.split("").map((col) => col));
+const grid = input.map((line) => line.split(" ").map((col) => col));
 ```
 ---
 Fill grid array with value
