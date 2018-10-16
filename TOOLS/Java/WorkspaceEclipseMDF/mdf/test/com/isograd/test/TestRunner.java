@@ -50,6 +50,9 @@ public class TestRunner {
         int ch = input1.read();
         while (-1 != ch) {
             int ch2 = input2.read();
+            if (13 == ch2) {
+                fail("Line " + line + " Expected [" + (char) ch + "] but found [return carriage]");
+            }
             if (ch != ch2) {
                 fail("Line " + line + " Expected [" + (char) ch + "] but found [" + (char) ch2 + "]");
             }
@@ -58,7 +61,7 @@ public class TestRunner {
         }
         int ch2 = input2.read();
         // gestion du saut de ligne en fin de fichier
-        while (10 == ch2) {
+        while (10 == ch2 || 13 == ch2) {
             ch2 = input2.read();
         }
         if (ch2 != -1) {
