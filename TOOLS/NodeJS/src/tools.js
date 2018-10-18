@@ -27,3 +27,6 @@ export const findStart = (grid, val) => {
     });
     return pos;
 }
+
+export const sortAsc = (a, b) => a - b;
+export const sortDesc = (a, b) => b - a;
