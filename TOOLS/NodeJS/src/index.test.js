@@ -12,8 +12,8 @@ const exclude = [
 
 const files = fs.readdirSync(path.resolve(path.join(__dirname, "examples"))).filter((filename) => !filename.startsWith("."));
 const fileGroup = _.groupBy(files, (file) => {
-    const number = path.parse(file).name.replace(/input|output/, "")/1;
-    return exclude.includes(number) ? "excludes": number;
+    const number = path.parse(file).name.replace(/input|output/, "") / 1;
+    return exclude.includes(number) ? "excludes" : number;
 });
 delete fileGroup.excludes;
 const jsonContents = Object.values(fileGroup).map(([input, output]) => {
@@ -33,7 +33,7 @@ describe("tests", () => {
             const result = content(_.cloneDeep(input));
 
             if (outputs.length === 1) {
-                expect(result).toEqual(isNaN(outputs[0]) ? outputs[0]: outputs[0]/1);
+                expect(result).toEqual(isNaN(outputs[0]) ? outputs[0] : outputs[0] / 1);
             } else {
                 try {
                     expect(result).toEqual(outputs.join(" "));
