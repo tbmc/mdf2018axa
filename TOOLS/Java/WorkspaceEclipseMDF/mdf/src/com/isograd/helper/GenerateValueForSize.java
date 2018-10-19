@@ -15,7 +15,7 @@ public class GenerateValueForSize {
         int n = set.length;
         List<String> result = new ArrayList<>();
         printAllKLengthRec(set, "", n, k, result);
-        result.stream().forEach(System.out::println);
+        //result.stream().forEach(System.out::println);
         return result;
     }
 
@@ -45,6 +45,21 @@ public class GenerateValueForSize {
             // we have added a new character
             printAllKLengthRec(set, newPrefix,
                     n, k - 1, list);
+        }
+    }
+
+    public static List<String> permutation(String str) {
+        List<String> result = new ArrayList<>();
+        permutation("", str, result);
+        return result;
+    }
+
+    private static void permutation(String prefix, String str, List<String> list) {
+        int n = str.length();
+        if (n == 0) list.add(prefix);
+        else {
+            for (int i = 0; i < n; i++)
+                permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n), list);
         }
     }
 }
