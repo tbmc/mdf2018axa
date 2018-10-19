@@ -13,5 +13,7 @@ const logs = (...args) => LocalPrint(args);
 //LocalPrintArray( $array );
 //return to send result
 export default (input) => {
+    const affiches = input.shift() / 1;
     input.shift();
+    return affiches - input.reduce((acc, val) => (acc + val / 1), 0)
 };
