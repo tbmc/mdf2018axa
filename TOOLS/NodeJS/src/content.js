@@ -4,6 +4,8 @@ import munkres from "munkres-js";
 import Combinatorics from "js-combinatorics";
 
 import {
+    ObjectMap, ObjectSet,
+    sortAsc, sortDesc,
     toGrid, toGridNumber, fillGrid,
     flipMatrix, flipMatrixCounterClockwise, rotateMatrix, rotateMatrixCounterClockwise
 } from "./tools";
