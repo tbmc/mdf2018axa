@@ -30,3 +30,39 @@ export const findStart = (grid, val) => {
 
 export const sortAsc = (a, b) => a - b;
 export const sortDesc = (a, b) => b - a;
+
+export class ObjectMap extends Map {
+    set(object, value) {
+        return super.set(JSON.stringify(object), value);
+    }
+
+    get(object) {
+        return super.get(JSON.stringify(object));
+    }
+
+    delete(object) {
+        return super.delete(JSON.stringify(object));
+    }
+
+    entries() {
+        return [...super.entries()].map(([k,v]) => [JSON.parse(k), v]);
+    }
+}
+
+export class ObjectSet extends Set {
+    has(object) {
+        return super.has(JSON.stringify(object));
+    }
+
+    delete(object) {
+        return super.delete(JSON.stringify(object));
+    }
+
+    add(object) {
+        return super.add(JSON.stringify(object));
+    }
+
+    keys() {
+        return [...super.keys].map((k) => JSON.parse(k));
+    }
+}
