@@ -4,7 +4,9 @@ import munkres from "munkres-js";
 import Combinatorics from "js-combinatorics";
 
 import {
-    toGrid, toGridNumber, fillGrid,
+    ObjectMap, ObjectSet,
+    sortAsc, sortDesc,
+    toGrid, toGridNumber, fillGrid, resultGridWithSpaces,
     flipMatrix, flipMatrixCounterClockwise, rotateMatrix, rotateMatrixCounterClockwise
 } from "./tools";
 const logs = (...args) => LocalPrint(args);
@@ -13,7 +15,9 @@ const logs = (...args) => LocalPrint(args);
 //LocalPrintArray( $array );
 //return to send result
 export default (input) => {
-    const affiches = input.shift() / 1;
+    const [dlat, dlng, elat, elng] = input.shift().split(" ").map(Number);
     input.shift();
-    return affiches - input.reduce((acc, val) => (acc + val / 1), 0)
+    return input.map(e => e.split(" ")).filter(([lat, lng]) => {
+        return (lat / 1 > dlat && lat / 1 < elat && lng / 1 > dlng && lng / 1 < elng)
+    }).length
 };
