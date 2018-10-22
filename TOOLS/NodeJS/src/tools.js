@@ -14,7 +14,7 @@ export const toGrid = (input, separator = "") => input.map((line) => line.split(
 export const toGridNumber = (input, separator = "") => input.map((line) => line.split(separator).map((col) => col / 1));
 
 export const fillGrid = (size, val) => Array(size).fill().map(() => Array(size).fill(val));
-
+export const resultGridWithSpaces = (grid) => grid.map((l) => l.join("")).join(" ");
 export const findStart = (grid, val) => {
     let pos = [];
     grid.some((line, lineIndex) => {

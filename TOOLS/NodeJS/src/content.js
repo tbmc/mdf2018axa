@@ -6,7 +6,7 @@ import Combinatorics from "js-combinatorics";
 import {
     ObjectMap, ObjectSet,
     sortAsc, sortDesc,
-    toGrid, toGridNumber, fillGrid,
+    toGrid, toGridNumber, fillGrid, resultGridWithSpaces,
     flipMatrix, flipMatrixCounterClockwise, rotateMatrix, rotateMatrixCounterClockwise
 } from "./tools";
 const logs = (...args) => LocalPrint(args);
