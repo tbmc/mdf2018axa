@@ -15,4 +15,5 @@ const logs = (...args) => LocalPrint(args);
 //LocalPrintArray( $array );
 //return to send result
 export default (input) => {
+    input.shift();
 };
