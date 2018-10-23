@@ -16,4 +16,13 @@ const logs = (...args) => LocalPrint(args);
 //return to send result
 export default (input) => {
     input.shift();
+    let match;
+    input.forEach((v) => {
+        ["nantes", "paris", "lyon", "marseille"].some(e=> {
+            if (v.toLowerCase().includes(e)) {
+                match = e;
+            }
+        });
+    });
+    console.log(match ? (match.charAt(0).toUpperCase() + match.slice(1)): "Pas de magasin");
 };
