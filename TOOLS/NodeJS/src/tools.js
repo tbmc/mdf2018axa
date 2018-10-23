@@ -4,7 +4,7 @@ export const flipMatrix = matrix => (
     ))
 );
 
-export const rotateMatrix = matrix => flipMatrix(matrix.reverse());
+export const rotateMatrix = matrix => flipMatrix([...matrix].reverse());
 
 export const rotateMatrixCounterClockwise = matrix => flipMatrix(matrix).reverse();
 
