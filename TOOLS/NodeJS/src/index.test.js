@@ -6,7 +6,6 @@ import path from "path";
 
 //1,2,3,4,5,6 => exclude input/output 1,2,3,4,5,6
 const exclude = [
-
 ];
 
 
@@ -25,8 +24,8 @@ const jsonContents = Object.values(fileGroup).map(([input, output]) => {
 });
 
 describe("tests", () => {
-    window.LocalPrint = (log) => console.info(log);
-    window.LocalPrintArray = (...logs) => logs.forEach((log) => console.info(log));
+    window.console.error = (log) => console.info(log);
+    window.console.errorArray = (...logs) => logs.forEach((log) => console.info(log));
 
     jsonContents.forEach(([input, outputs]) => {
         test("process test", () => {
