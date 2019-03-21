@@ -68,3 +68,12 @@ export class ObjectSet extends Set {
         return [...super.keys].map((k) => JSON.parse(k));
     }
 }
+
+Array.prototype.groupBy = function(fn) {
+    const map = new Map();
+    this.forEach((val) => {
+        const res = fn(val)
+        map.set(res, [...(map.get(res) || []), val]);
+    })
+    return [...map.entries()].reduce((obj, [key, value]) => (obj[key] = value, obj), {});
+}
