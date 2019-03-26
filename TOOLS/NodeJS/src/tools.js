@@ -77,3 +77,17 @@ Array.prototype.groupBy = function(fn) {
     })
     return [...map.entries()].reduce((obj, [key, value]) => (obj[key] = value, obj), {});
 }
+
+export const toNumbers = str => str.split(" ").map(Number);
+export const operateTwoArrs = (arr1, arr2, operation) => arr1.map((e,i) => operation(e, arr2[i]));
+
+const sumArrs = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => a+b);
+const divideTwoArrs = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => a/b);
+const multiplyTwoArrs = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => a*b);
+const substractTwoArrs = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => a-b);
+
+const substractTwoArrsZero = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => (a-b>=0)?a-b:0);
+const divideTwoArrsFloor = (arr1, arr2) => operateTwoArrs(arr1, arr2, (a,b) => Math.floor(a/b));
+
+export const smallestInArr = arr => Math.floor(arr.sort(sortAsc)[0]);
+export const biggestInArr = arr => Math.floor(arr.sort(sortDesc)[0]);
