@@ -4,7 +4,8 @@
             "useBuiltIns": "usage",
             "targets": {
                 "node": "11.11"
-            }
+            },
+            "corejs": "3.x"
         }]
     ],
     "plugins": [
