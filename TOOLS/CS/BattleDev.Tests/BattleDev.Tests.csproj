@@ -1,29 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <ProjectGuid>{CE9FAC8C-9D4A-4172-AA24-FCCA301431B0}</ProjectGuid>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <TestProjectType>UnitTest</TestProjectType>
-    <AssemblyTitle>BattleDev.Tests</AssemblyTitle>
-    <Company>Microsoft</Company>
-    <Product>BattleDev.Tests</Product>
-    <Copyright>Copyright © Microsoft 2017</Copyright>
+
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+
   <ItemGroup>
-    <PackageReference Include="Shouldly" Version="3.0.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+    <PackageReference Include="FluentAssertions" Version="5.8.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\BattleDev\BattleDev.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="IO\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Folder Include="IO\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="IO\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

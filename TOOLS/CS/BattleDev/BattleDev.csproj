@@ -1,12 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <ProjectGuid>{B95FDA0A-E9BC-472A-BC10-A4E3172F95A0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <AssemblyTitle>ConsoleApplication2</AssemblyTitle>
-    <Company>Microsoft</Company>
-    <Product>ConsoleApplication2</Product>
-    <Copyright>Copyright © Microsoft 2016</Copyright>
   </PropertyGroup>
+
 </Project>
